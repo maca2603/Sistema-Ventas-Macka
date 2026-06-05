@@ -59,14 +59,13 @@ function login() {
 }
 
 function abrirStock() {
-    document.getElementById("app").style.display = "none";
+    document.getElementById("sistemaVentas").style.display = "none";
     document.getElementById("stockPage").style.display = "block";
-    renderStock();
 }
 
 function volverAlSistema() {
     document.getElementById("stockPage").style.display = "none";
-    document.getElementById("app").style.display = "block";
+    document.getElementById("sistemaVentas").style.display = "block";
 }
 
 function cerrarSesion() {
