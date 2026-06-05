@@ -460,14 +460,25 @@ function soloNumeros(event) {
 }
 
 function mostrarAlerta(titulo, texto) {
+
     let modal = document.getElementById("modalAlerta");
 
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
+    // ocultamos botón cancelar si es solo mensaje
+    document.getElementById("btnCancelar").style.display = "none";
+    document.getElementById("btnAceptar").textContent = "OK";
+
     modal.style.display = "flex";
-    modal.style.justifyContent = "center";
-    modal.style.alignItems = "center";
+
+    document.getElementById("btnAceptar").onclick = () => {
+        modal.style.display = "none";
+
+        // restaurar botones
+        document.getElementById("btnCancelar").style.display = "inline-block";
+        document.getElementById("btnAceptar").textContent = "Aceptar";
+    };
 }
 
 function cerrarAlerta() {
