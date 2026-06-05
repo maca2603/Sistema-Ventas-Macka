@@ -515,12 +515,21 @@ function mostrarConfirmacion(titulo, texto, callback) {
 
 document.addEventListener("keydown", function (event) {
 
-    let modal = document.getElementById("modalAlerta");
+    const modal = document.getElementById("modalAlerta");
 
+    // ❌ si el modal NO está visible, no hacemos nada
     if (modal.style.display !== "flex") return;
 
+    // 🔥 evitamos que Enter afecte otros eventos del sistema
     if (event.key === "Enter") {
-        event.preventDefault(); // 🔥 clave
+        event.preventDefault();
+        event.stopPropagation(); // 👈 CLAVE (bloquea el resto)
         document.getElementById("btnAceptar").click();
     }
-});
+
+    if (event.key === "Escape") {
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById("btnCancelar").click();
+    }
+}, true); // 👈 captura antes que otros eventos
