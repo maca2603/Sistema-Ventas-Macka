@@ -517,14 +517,15 @@ document.addEventListener("keydown", function (event) {
 
     let modal = document.getElementById("modalAlerta");
 
-    if (modal.style.display === "flex") {
+    if (modal.style.display !== "flex") return;
 
-        if (event.key === "Enter") {
-            document.getElementById("btnAceptar").click();
-        }
+    if (event.key === "Enter") {
+        event.preventDefault(); // 🔥 clave
+        document.getElementById("btnAceptar").click();
+    }
 
-        if (event.key === "Escape") {
-            document.getElementById("btnCancelar").click();
-        }
+    if (event.key === "Escape") {
+        event.preventDefault();
+        document.getElementById("btnCancelar").click();
     }
 });
