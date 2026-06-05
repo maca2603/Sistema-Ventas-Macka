@@ -140,8 +140,8 @@ function editarProducto(i) {
 
     if (nuevaCantidad === null) return;
 
-    if (isNaN(nuevaCantidad) || Number(nuevaCantidad) <= 0) {
-        alert("La cantidad debe ser un número válido.");
+    if (isNaN(Number(nuevaCantidad)) || Number(nuevaCantidad) <= 0) {
+        alert("La cantidad debe contener solo números mayores a 0.");
         return;
     }
 
@@ -152,8 +152,8 @@ function editarProducto(i) {
 
     if (nuevoPrecio === null) return;
 
-    if (isNaN(nuevoPrecio) || Number(nuevoPrecio) < 0) {
-        alert("El precio debe ser un número válido.");
+    if (isNaN(Number(nuevoPrecio)) || Number(nuevoPrecio) < 0) {
+        alert("El precio debe contener solo números válidos.");
         return;
     }
 
