@@ -461,9 +461,9 @@ function mostrarAlerta(titulo, texto) {
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
-    document.getElementById("modalAlerta").style.display = "flex";
+    document.getElementById("modalAlerta").classList.add("mostrar");
 }
 
 function cerrarAlerta() {
-    document.getElementById("modalAlerta").style.display = "none";
+    document.getElementById("modalAlerta").classList.remove("mostrar");
 }
