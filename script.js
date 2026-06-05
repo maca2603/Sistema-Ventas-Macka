@@ -119,11 +119,13 @@ function renderHistorial() {
 
 function eliminarProducto(i) {
 
-    if (!confirm("¿Seguro que querés eliminar este producto?")) return;
+    mostrarConfirmacion("Eliminar", "¿Seguro que querés eliminar este producto?", (ok) => {
 
-    historialVentas.splice(i, 1);
+        if (!ok) return;
 
-    renderHistorial();
+        historialVentas.splice(i, 1);
+        renderHistorial();
+    });
 }
 
 function editarProducto(i) {
@@ -470,4 +472,28 @@ function mostrarAlerta(titulo, texto) {
 
 function cerrarAlerta() {
     document.getElementById("modalAlerta").classList.remove("mostrar");
+}
+
+// =======================
+// CONFIRMACIÓN MODAL
+// =======================
+
+function mostrarConfirmacion(titulo, texto, callback) {
+
+    let modal = document.getElementById("modalAlerta");
+
+    document.getElementById("alertaTitulo").textContent = titulo;
+    document.getElementById("alertaTexto").textContent = texto;
+
+    modal.style.display = "flex";
+
+    document.getElementById("btnAceptar").onclick = () => {
+        modal.style.display = "none";
+        callback(true);
+    };
+
+    document.getElementById("btnCancelar").onclick = () => {
+        modal.style.display = "none";
+        callback(false);
+    };
 }
