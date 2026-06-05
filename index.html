@@ -127,7 +127,7 @@
         <input id="stockCantidad" type="number" placeholder="Cantidad"
         onkeydown="if(event.key==='Enter') agregarProductoStock()">
 
-        <button onclick="agregarProductoStock()">Agregar producto</button>
+        <button onclick="abrirModalStock()">Agregar producto</button>
 
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
@@ -156,6 +156,31 @@
         </button>
 
         <button onclick="cerrarModalEditar()">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
+<!-- ===================== MODAL STOCK ===================== -->
+<div id="modalStock" style="display:none;">
+
+    <div class="modal-contenido">
+
+        <h3 id="stockTituloModal">Agregar producto</h3>
+
+        <input type="text" id="modalStockNombre" placeholder="Nombre">
+
+        <input type="number" id="modalStockPrecio" placeholder="Precio">
+
+        <input type="number" id="modalStockCantidad" placeholder="Cantidad">
+
+        <button onclick="guardarStockModal()">
+            Guardar
+        </button>
+
+        <button onclick="cerrarModalStock()">
             Cancelar
         </button>
 

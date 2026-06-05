@@ -19,6 +19,8 @@ let stock = JSON.parse(localStorage.getItem("stock")) || [];
 
 let ticketSeleccionado = -1;
 
+let editandoStockIndex = -1;
+
 let hoy = new Date().toLocaleDateString();
 let Fecha = localStorage.getItem("Fecha");
 
@@ -105,33 +107,6 @@ function agregarVentaRapida() {
     document.getElementById("cantidad").value = "1";
 }
 
-function agregarProductoStock() {
-
-    let nombre = document.getElementById("stockNombre").value;
-    let precio = Number(document.getElementById("stockPrecio").value);
-    let cantidad = Number(document.getElementById("stockCantidad").value);
-
-    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
-        mostrarAlerta("Error", "Completa todos los campos");
-        return;
-    }
-
-    stock.push({
-        codigo: Date.now(),
-        nombre: nombre.toLowerCase(),
-        precio,
-        cantidad
-    });
-
-    localStorage.setItem("stock", JSON.stringify(stock));
-
-    renderStock();
-
-    document.getElementById("stockNombre").value = "";
-    document.getElementById("stockPrecio").value = "";
-    document.getElementById("stockCantidad").value = "";
-}
-
 function renderStock() {
 
     let lista = document.getElementById("listaStock");
@@ -164,21 +139,15 @@ function eliminarStock(i) {
 function editarStock(i) {
 
     let p = stock[i];
+    editandoStockIndex = i;
 
-    let nombre = prompt("Nombre:", p.nombre);
-    let precio = prompt("Precio:", p.precio);
-    let cantidad = prompt("Cantidad:", p.cantidad);
+    document.getElementById("stockTituloModal").textContent = "Editar producto";
 
-    if (!nombre || isNaN(precio) || isNaN(cantidad)) return;
+    document.getElementById("modalStockNombre").value = p.nombre;
+    document.getElementById("modalStockPrecio").value = p.precio;
+    document.getElementById("modalStockCantidad").value = p.cantidad;
 
-    stock[i] = {
-        nombre: nombre.toLowerCase(),
-        precio: Number(precio),
-        cantidad: Number(cantidad)
-    };
-
-    localStorage.setItem("stock", JSON.stringify(stock));
-    renderStock();
+    document.getElementById("modalStock").style.display = "flex";
 }
 
 function descontarStock(nombre) {
@@ -655,3 +624,57 @@ document.addEventListener("keydown", function (event) {
     }
 
 }, true);
+
+function abrirModalStock() {
+    editandoStockIndex = -1;
+
+    document.getElementById("stockTituloModal").textContent = "Agregar producto";
+
+    document.getElementById("modalStockNombre").value = "";
+    document.getElementById("modalStockPrecio").value = "";
+    document.getElementById("modalStockCantidad").value = "";
+
+    document.getElementById("modalStock").style.display = "flex";
+}
+
+function guardarStockModal() {
+
+    let nombre = document.getElementById("modalStockNombre").value;
+    let precio = Number(document.getElementById("modalStockPrecio").value);
+    let cantidad = Number(document.getElementById("modalStockCantidad").value);
+
+    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+        mostrarAlerta("Error", "Completa todos los campos");
+        return;
+    }
+
+    // 🔥 EDITAR
+    if (editandoStockIndex !== -1) {
+
+        stock[editandoStockIndex] = {
+            nombre: nombre.toLowerCase(),
+            precio,
+            cantidad
+        };
+
+    } 
+    // 🔥 CREAR
+    else {
+
+        stock.push({
+            nombre: nombre.toLowerCase(),
+            precio,
+            cantidad
+        });
+    }
+
+    localStorage.setItem("stock", JSON.stringify(stock));
+
+    cerrarModalStock();
+    renderStock();
+}
+
+function cerrarModalStock() {
+    document.getElementById("modalStock").style.display = "none";
+    editandoStockIndex = -1;
+}
