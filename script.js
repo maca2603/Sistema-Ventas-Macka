@@ -154,6 +154,40 @@ function renderStock() {
     });
 }
 
+function eliminarStock(i) {
+
+    mostrarConfirmacion("Eliminar producto", "¿Seguro que querés eliminarlo?", (ok) => {
+
+        if (!ok) return;
+
+        stock.splice(i, 1);
+
+        localStorage.setItem("stock", JSON.stringify(stock));
+        renderStock();
+    });
+}
+
+function editarStock(i) {
+
+    let p = stock[i];
+
+    let nuevoNombre = prompt("Nombre:", p.nombre);
+    let nuevoPrecio = prompt("Precio:", p.precio);
+    let nuevaCantidad = prompt("Cantidad:", p.cantidad);
+
+    if (!nuevoNombre || isNaN(nuevoPrecio) || isNaN(nuevaCantidad)) return;
+
+    stock[i] = {
+        ...p,
+        nombre: nuevoNombre.toLowerCase(),
+        precio: Number(nuevoPrecio),
+        cantidad: Number(nuevaCantidad)
+    };
+
+    localStorage.setItem("stock", JSON.stringify(stock));
+    renderStock();
+}
+
 function descontarStock(nombre) {
 
     let producto = stock.find(p => p.nombre === nombre.toLowerCase());
