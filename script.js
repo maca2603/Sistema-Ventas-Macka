@@ -151,17 +151,11 @@ function descontarStock(nombre) {
 
     let producto = stock.find(p => p.nombre === nombre.toLowerCase());
 
-    if (!producto) {
-        mostrarAlerta("Stock", "Producto no encontrado en stock");
-        return;
-    }
+    if (!producto) return;
 
-    if (producto.cantidad <= 0) {
-        mostrarAlerta("Stock", "Sin stock disponible");
-        return;
+    if (producto.cantidad > 0) {
+        producto.cantidad -= 1;
     }
-
-    producto.cantidad -= 1;
 
     localStorage.setItem("stock", JSON.stringify(stock));
 
