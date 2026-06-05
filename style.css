@@ -253,3 +253,22 @@ h2, h3 {
     color: #d46a92;
 }
 
+.modo-oscuro h1,
+.modo-oscuro h2,
+.modo-oscuro h3,
+.modo-oscuro p,
+.modo-oscuro span,
+.modo-oscuro label,
+.modo-oscuro li {
+    color: #d46a92 !important;
+}
+
+.titulo-principal {
+    font-size: 36px;
+    font-weight: bold;
+    color: #d46a92;
+}
+
+body {
+    font-size: 16px;
+}
