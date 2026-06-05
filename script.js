@@ -175,9 +175,9 @@ function guardarEdicion() {
 function cerrarCaja() {
 
     if (historialVentas.length === 0) {
-        mostrarAlerta("Atención", "No hay ventas");
-        return;
-    }
+    mostrarAlerta("Atención", "No hay ventas para finalizar");
+    return;
+}
 
     let total = 0;
     let texto = "TICKET FINAL\n\n";
@@ -210,6 +210,8 @@ function cerrarCaja() {
 
     recalcularVentasDelDia();
     guardarDatos();
+
+    mostrarAlerta("Guardado", "Venta finalizada correctamente");
 }
 
 // =======================
