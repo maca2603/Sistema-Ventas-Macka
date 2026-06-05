@@ -15,6 +15,8 @@ let historialDias = JSON.parse(localStorage.getItem("historialDias")) || [];
 
 let tickets = JSON.parse(localStorage.getItem("tickets")) || [];
 
+let stock = JSON.parse(localStorage.getItem("stock")) || [];
+
 let ticketSeleccionado = -1;
 
 let hoy = new Date().toLocaleDateString();
@@ -56,6 +58,17 @@ function login() {
     }
 }
 
+function abrirStock() {
+    document.getElementById("app").style.display = "none";
+    document.getElementById("stockPage").style.display = "block";
+    renderStock();
+}
+
+function volverAlSistema() {
+    document.getElementById("stockPage").style.display = "none";
+    document.getElementById("app").style.display = "block";
+}
+
 function cerrarSesion() {
     document.getElementById("app").style.display = "none";
     document.getElementById("login").style.display = "block";
@@ -84,11 +97,63 @@ function agregarVentaRapida() {
         total
     });
 
+    descontarStock(nombre);
+
     renderHistorial();
 
     document.getElementById("producto").value = "";
     document.getElementById("precio").value = "";
     document.getElementById("cantidad").value = "1";
+}
+
+function agregarProductoStock() {
+
+    let nombre = document.getElementById("stockNombre").value;
+    let precio = Number(document.getElementById("stockPrecio").value);
+    let cantidad = Number(document.getElementById("stockCantidad").value);
+
+    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+        alert("Completa todo");
+        return;
+    }
+
+    stock.push({
+        codigo: Date.now(),
+        nombre,
+        precio,
+        cantidad
+    });
+
+    localStorage.setItem("stock", JSON.stringify(stock));
+
+    renderStock();
+}
+
+function renderStock() {
+
+    let lista = document.getElementById("listaStock");
+    lista.innerHTML = "";
+
+    stock.forEach((p) => {
+        lista.innerHTML += `
+            <li>
+                ${p.nombre} - $${p.precio} - Stock: ${p.cantidad}
+            </li>
+        `;
+    });
+}
+
+function descontarStock(nombre) {
+
+    let producto = stock.find(p => p.nombre === nombre);
+
+    if (!producto) return;
+
+    if (producto.cantidad > 0) {
+        producto.cantidad -= 1;
+    }
+
+    localStorage.setItem("stock", JSON.stringify(stock));
 }
 
 // =======================

@@ -48,6 +48,23 @@
 <!-- APP -->
 <div id="app" style="display:none;">
 
+    <div id="stockPage" style="display:none;">
+
+    <h2>Stock de productos</h2>
+
+    <input id="stockNombre" placeholder="Nombre">
+    <input id="stockPrecio" type="number" placeholder="Precio">
+    <input id="stockCantidad" type="number" placeholder="Cantidad">
+
+    <button onclick="agregarProductoStock()">Agregar producto</button>
+
+    <h3>Lista de stock</h3>
+    <ul id="listaStock"></ul>
+
+    <button onclick="volverAlSistema()">⬅ Volver</button>
+
+</div>
+
     <div class="container">
 
         <!-- IZQUIERDA -->
@@ -77,6 +94,8 @@
         <div class="right">
 
             <button onclick="cerrarCaja()">Finalizar venta</button>
+
+            <button onclick="abrirStock()">Stock</button>
 
             <button onclick="limpiarTicket()">Limpiar ticket</button>
 
