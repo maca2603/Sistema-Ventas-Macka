@@ -98,7 +98,7 @@ function agregarVentaRapida() {
         total
     });
 
-    descontarStock(nombre);
+    descontarStock(nombre, cantidad);
 
     renderHistorial();
 
@@ -150,14 +150,16 @@ function editarStock(i) {
     document.getElementById("modalStock").style.display = "flex";
 }
 
-function descontarStock(nombre) {
+function descontarStock(nombre, cantidad) {
 
     let producto = stock.find(p => p.nombre === nombre.toLowerCase());
 
     if (!producto) return;
 
-    if (producto.cantidad > 0) {
-        producto.cantidad -= 1;
+    producto.cantidad -= cantidad;
+
+    if (producto.cantidad < 0) {
+        producto.cantidad = 0;
     }
 
     localStorage.setItem("stock", JSON.stringify(stock));
