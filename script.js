@@ -175,7 +175,7 @@ function guardarEdicion() {
 function cerrarCaja() {
 
     if (historialVentas.length === 0) {
-        alert("No hay ventas");
+        mostrarAlerta("Atención", "No hay ventas");
         return;
     }
 
