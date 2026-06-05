@@ -483,8 +483,10 @@ function mostrarAlerta(titulo, texto) {
     };
 }
 
-function cerrarAlerta() {
-    document.getElementById("modalAlerta").classList.remove("mostrar");
+function cerrarAlerta(event) {
+    if (event.target.id === "modalAlerta") {
+        document.getElementById("modalAlerta").style.display = "none";
+    }
 }
 
 // =======================
