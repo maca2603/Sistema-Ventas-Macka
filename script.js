@@ -119,7 +119,7 @@ function renderHistorial() {
 
 function eliminarProducto(i) {
 
-    mostrarAlerta("Eliminar", "¿Seguro que querés eliminar este producto?");
+    if (!confirm("¿Seguro que querés eliminar este producto?")) return;
 
     historialVentas.splice(i, 1);
 
