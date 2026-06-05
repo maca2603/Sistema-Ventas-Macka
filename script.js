@@ -517,19 +517,24 @@ document.addEventListener("keydown", function (event) {
 
     const modal = document.getElementById("modalAlerta");
 
-    // ❌ si el modal NO está visible, no hacemos nada
-    if (modal.style.display !== "flex") return;
+    const modalAbierto = modal.style.display === "flex";
 
-    // 🔥 evitamos que Enter afecte otros eventos del sistema
-    if (event.key === "Enter") {
-        event.preventDefault();
-        event.stopPropagation(); // 👈 CLAVE (bloquea el resto)
-        document.getElementById("btnAceptar").click();
+    // 🔥 si modal abierto → Enter SOLO sirve para modal
+    if (modalAbierto) {
+
+        if (event.key === "Enter") {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            document.getElementById("btnAceptar").click();
+        }
+
+        if (event.key === "Escape") {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            document.getElementById("btnCancelar").click();
+        }
+
+        return; // ❌ no deja que nada más se ejecute
     }
 
-    if (event.key === "Escape") {
-        event.preventDefault();
-        event.stopPropagation();
-        document.getElementById("btnCancelar").click();
-    }
-}, true); // 👈 captura antes que otros eventos
+}, true);
