@@ -276,7 +276,10 @@ function mostrarEstadisticas() {
     ).length;
 
     document.getElementById("estadisticas").innerHTML =
-        `Tickets hoy: ${hoyTickets}<br>Total: $${ventasDelDia}`;
+        `<span style="color:#d46a92">
+            Tickets hoy: ${hoyTickets}<br>
+            Total: $${ventasDelDia}
+        </span>`;
 }
 
 function renderHistorialDias() {
