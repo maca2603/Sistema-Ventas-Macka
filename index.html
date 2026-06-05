@@ -47,28 +47,47 @@
 
 </div>
 
-<!-- APP -->
 <div id="app" style="display:none;">
 
-    <!-- TODO TU SISTEMA DE VENTAS VA ACÁ -->
+    <!-- BOTÓN STOCK ARRIBA DEL TODO -->
+    <button onclick="abrirStock()">Stock</button>
 
-</div>
+    <!-- SISTEMA PRINCIPAL -->
+    <div id="sistemaVentas">
 
-<!-- ================= STOCK PAGE (FUERA DEL APP) ================= -->
-<div id="stockPage" style="display:none;">
+        <div class="container">
 
-    <h2>Stock de productos</h2>
+            <!-- IZQUIERDA -->
+            <div class="left">
+                ...
+            </div>
 
-    <input id="stockNombre" placeholder="Nombre">
-    <input id="stockPrecio" type="number" placeholder="Precio">
-    <input id="stockCantidad" type="number" placeholder="Cantidad">
+            <!-- DERECHA -->
+            <div class="right">
+                ...
+            </div>
 
-    <button onclick="agregarProductoStock()">Agregar producto</button>
+        </div>
 
-    <h3>Lista de stock</h3>
-    <ul id="listaStock"></ul>
+    </div>
 
-    <button onclick="volverAlSistema()">⬅ Volver</button>
+    <!-- STOCK (PANTALLA OCULTA) -->
+    <div id="stockPage" style="display:none;">
+
+        <h2>Stock de productos</h2>
+
+        <input id="stockNombre" placeholder="Nombre">
+        <input id="stockPrecio" type="number" placeholder="Precio">
+        <input id="stockCantidad" type="number" placeholder="Cantidad">
+
+        <button onclick="agregarProductoStock()">Agregar producto</button>
+
+        <h3>Lista de stock</h3>
+        <ul id="listaStock"></ul>
+
+        <button onclick="volverAlSistema()">Volver</button>
+
+    </div>
 
 </div>
 
