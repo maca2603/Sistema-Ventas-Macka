@@ -81,7 +81,7 @@ function cerrarSesion() {
 
 function agregarVentaRapida() {
 
-    let nombre = document.getElementById("producto").value;
+    let entrada = document.getElementById("producto").value.trim();
     let precio = Number(document.getElementById("precio").value);
     let cantidad = Number(document.getElementById("cantidad").value);
 
@@ -98,7 +98,7 @@ function agregarVentaRapida() {
         total
     });
 
-    descontarStock(nombre, cantidad);
+    descontarStock(entrada, cantidad);
 
     renderHistorial();
 
@@ -113,8 +113,10 @@ function renderStock() {
     lista.innerHTML = "";
 
     stock.forEach((p, i) => {
+
         lista.innerHTML += `
             <li>
+                Código: ${p.id}<br>
                 ${p.nombre} - $${p.precio} - Stock: ${p.cantidad}
 
                 <button onclick="editarStock(${i})">Editar</button>
@@ -152,7 +154,10 @@ function editarStock(i) {
 
 function descontarStock(nombre, cantidad) {
 
-    let producto = stock.find(p => p.nombre === nombre.toLowerCase());
+    let producto = stock.find(p =>
+    p.id == nombre || 
+    p.nombre === nombre.toLowerCase().trim()
+);
 
     if (!producto) return;
 
@@ -664,10 +669,11 @@ function guardarStockModal() {
     else {
 
         stock.push({
-            nombre: nombre.toLowerCase(),
-            precio,
-            cantidad
-        });
+    id: Date.now(),
+    nombre: nombre.toLowerCase(),
+    precio,
+    cantidad
+});
     }
 
     localStorage.setItem("stock", JSON.stringify(stock));
