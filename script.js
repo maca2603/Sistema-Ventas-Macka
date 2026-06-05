@@ -113,13 +113,13 @@ function agregarProductoStock() {
     let cantidad = Number(document.getElementById("stockCantidad").value);
 
     if (!nombre || isNaN(precio) || isNaN(cantidad)) {
-        alert("Completa todo");
+        mostrarAlerta("Error", "Completa todos los campos");
         return;
     }
 
     stock.push({
         codigo: Date.now(),
-        nombre,
+        nombre: nombre.toLowerCase(),
         precio,
         cantidad
     });
@@ -127,6 +127,10 @@ function agregarProductoStock() {
     localStorage.setItem("stock", JSON.stringify(stock));
 
     renderStock();
+
+    document.getElementById("stockNombre").value = "";
+    document.getElementById("stockPrecio").value = "";
+    document.getElementById("stockCantidad").value = "";
 }
 
 function renderStock() {
@@ -145,15 +149,23 @@ function renderStock() {
 
 function descontarStock(nombre) {
 
-    let producto = stock.find(p => p.nombre === nombre);
+    let producto = stock.find(p => p.nombre === nombre.toLowerCase());
 
-    if (!producto) return;
-
-    if (producto.cantidad > 0) {
-        producto.cantidad -= 1;
+    if (!producto) {
+        mostrarAlerta("Stock", "Producto no encontrado en stock");
+        return;
     }
 
+    if (producto.cantidad <= 0) {
+        mostrarAlerta("Stock", "Sin stock disponible");
+        return;
+    }
+
+    producto.cantidad -= 1;
+
     localStorage.setItem("stock", JSON.stringify(stock));
+
+    renderStock();
 }
 
 // =======================
