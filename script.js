@@ -342,14 +342,16 @@ function eliminarTicket(i, event) {
 
     event.stopPropagation();
 
-    if (!confirm("¿Eliminar este ticket?")) return;
+    mostrarConfirmacion("Eliminar ticket", "¿Seguro que querés eliminar este ticket?", (ok) => {
 
-    tickets.splice(i, 1);
+        if (!ok) return;
 
-    guardarDatos();
-    renderTickets();
+        tickets.splice(i, 1);
 
-    recalcularVentasDelDia();
+        guardarDatos();
+        renderTickets();
+        recalcularVentasDelDia();
+    });
 }
 
 function recalcularVentasDelDia() {
