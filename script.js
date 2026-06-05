@@ -512,3 +512,19 @@ function mostrarConfirmacion(titulo, texto, callback) {
         callback(false);
     };
 }
+
+document.addEventListener("keydown", function (event) {
+
+    let modal = document.getElementById("modalAlerta");
+
+    if (modal.style.display === "flex") {
+
+        if (event.key === "Enter") {
+            document.getElementById("btnAceptar").click();
+        }
+
+        if (event.key === "Escape") {
+            document.getElementById("btnCancelar").click();
+        }
+    }
+});
