@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="encabezado">
+
+    <h1>Sistema de ventas</h1>
+
+    <div id="fechaHora"></div>
+
+    <div class="header-botones">
+        
+        <button id="btnTema" onclick="cambiarTema()">🌙</button>
+
+        <button id="btnCerrarSesion"
+                onclick="cerrarSesion()"
+                style="display:none;">
+            Cerrar sesión
+        </button>
+
+    </div>
+
+</div>
+
+<!-- LOGIN -->
+<div id="login">
+
+    <h3>Login</h3>
+
+    <input type="text" id="user" placeholder="Usuario"
+       onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
+
+    <input type="password" id="pass" placeholder="Contraseña"
+       onkeydown="if(event.key==='Enter') login()">
+
+    <button onclick="login()">Ingresar</button>
+
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;">
+
+    <div class="container">
+
+        <!-- IZQUIERDA -->
+        <div class="left">
+
+            <h2>Venta</h2>
+
+            <input id="producto" type="text" placeholder="Producto"
+       onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
+
+            <input id="precio" type="number" placeholder="Precio"
+       onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
+
+            <input id="cantidad" type="number" value="1" min="1"
+       onkeydown="if(event.key==='Enter') agregarVentaRapida()">
+
+            <button onclick="agregarVentaRapida()">Agregar venta</button>
+
+            <h3>Historial de ventas</h3>
+
+            <!-- 🔥 ESTO ES LO QUE TE FALTABA -->
+            <ul id="historial"></ul>
+
+        </div>
+
+        <!-- DERECHA -->
+        <div class="right">
+
+            <button onclick="cerrarCaja()">Finalizar venta</button>
+
+            <button onclick="limpiarTicket()">Limpiar ticket</button>
+
+            <h3>Ticket</h3>
+            
+            <pre id="ticket"></pre>
+
+            <h3>Estadísticas del día</h3>
+            
+            <div id="estadisticas"></div>
+            
+            <h3>Historial Dias</h3>
+            
+            <ul id="historialDias"></ul>
+
+            <h3 id="tituloTickets">Tickets Guardados (0)</h3>
+
+            <input type="date" id="buscarFecha">
+
+            <button onclick="buscarTicketsPorFecha()">
+                Buscar
+            </button>
+
+            <button onclick="renderTickets()">
+                Mostrar todos
+            </button>
+            
+            <ul id="historialTickets"></ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

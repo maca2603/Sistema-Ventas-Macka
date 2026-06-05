@@ -1,0 +1,254 @@
+body {
+    font-family: Arial;
+    background: linear-gradient(135deg, #fff7fb, #fffaf5);
+    padding: 30px;
+}
+
+h1 {
+    color: #d46a92;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+
+    border: 2px solid #f2b6cc;
+    border-radius: 10px;
+
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #d46a92;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #d46a92;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #bf5a80;
+}
+
+/* LISTAS */
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background-color: white;
+    margin-top: 12px;
+    padding: 12px;
+    width: 320px;
+    list-style: none;
+    border-left: 5px solid #e8d8c4;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+li button {
+    margin-left: 10px;
+    background-color: #f2b6cc;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+li button:hover {
+    background-color: #d46a92;
+}
+
+/* CONTENEDOR */
+.container {
+    display: flex;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+/* COLUMNAS */
+.left,
+.right {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+/* TITULOS */
+h2, h3 {
+    color: #bf5a80;
+}
+
+/* LOGIN */
+#login {
+    background-color: white;
+    width: 320px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ENCABEZADO */
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-botones {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* CALENDARIO */
+#calendario {
+    margin-top: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #bf5a80;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.08);
+}
+
+/* ESTADISTICAS */
+#estadisticas {
+    margin-top: 15px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    color: #bf5a80;
+    font-weight: bold;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.08);
+}
+
+/* HISTORIAL DIAS */
+#historialDias li {
+    background-color: #fffaf5;
+    border-left: 5px solid #e8d8c4;
+    margin-bottom: 12px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+/* HISTORIAL TICKETS */
+#historialTickets li {
+    margin-bottom: 12px;
+    padding: 12px;
+    cursor: pointer;
+}
+
+#historialTickets li:hover {
+    transform: translateY(-2px);
+    transition: 0.2s;
+}
+
+#historialTickets li button {
+    margin-top: 8px;
+    padding: 5px 10px;
+    background-color: #f2b6cc;
+    border-radius: 8px;
+}
+
+#historialTickets li button:hover {
+    background-color: #d46a92;
+}
+
+/* TICKET ACTIVO */
+.ticket-activo {
+    border-left: 5px solid #d46a92;
+    background-color: #ffe6f0;
+    font-weight: bold;
+}
+
+/* TICKET (CLARO) */
+#ticket {
+    background: linear-gradient(135deg, #f2b6cc);
+    color: #111;
+    padding: 12px;
+    min-height: 120px;
+    white-space: pre-wrap;
+    border-radius: 10px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+/* MODO OSCURO */
+.modo-oscuro {
+    background: #1e1e1e;
+    color: #eaeaea;
+}
+
+.modo-oscuro .left,
+.modo-oscuro .right,
+.modo-oscuro #login {
+    background-color: #2b2b2b;
+}
+
+/* textos */
+.modo-oscuro h1,
+.modo-oscuro h2,
+.modo-oscuro h3 {
+    color: #ffffff;
+}
+
+/* inputs */
+.modo-oscuro input {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    border-color: #555;
+}
+
+/* listas */
+.modo-oscuro li {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* ticket oscuro (IMPORTANTE FIX REAL) */
+.modo-oscuro #ticket {
+    background-color: #121212 !important;
+    color: #000000 !important;
+    border: 2px solid #666 !important;
+    box-shadow: 0 0 12px rgba(0,0,0,0.8) !important;
+}
+
+/* FORZAR TEXTO DENTRO DEL PRE (CLAVE) */
+.modo-oscuro #ticket * {
+    color: #f2f2f2 !important;
+}
+
+/* calendario + stats */
+.modo-oscuro #calendario,
+.modo-oscuro #estadisticas {
+    background-color: #2f2f2f;
+    color: #ffffff;
+}
+
+/* historial ventas */
+.modo-oscuro #historial li {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* historial dias */
+.modo-oscuro #historialDias li {
+    background-color: #333;
+    color: #ffffff;
+}
+
+#fechaHora {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #d46a92;
+}
