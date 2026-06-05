@@ -655,31 +655,32 @@ function guardarStockModal() {
         return;
     }
 
-    // 🔥 EDITAR
     if (editandoStockIndex !== -1) {
 
         stock[editandoStockIndex] = {
-            nombre: nombre.toLowerCase(),
+            id: stock[editandoStockIndex].id,
+            nombre: nombre.toLowerCase().trim(),
             precio,
             cantidad
         };
 
-    } 
-    // 🔥 CREAR
-    else {
+    } else {
 
         stock.push({
-    id: Date.now(),
-    nombre: nombre.toLowerCase(),
-    precio,
-    cantidad
-});
+            id: Date.now(),
+            nombre: nombre.toLowerCase().trim(),
+            precio,
+            cantidad
+        });
     }
 
     localStorage.setItem("stock", JSON.stringify(stock));
 
-    cerrarModalStock();
+    cerrarModalStock();   // 🔥 CLAVE (esto evita el bug)
     renderStock();
+
+    // limpiar estado
+    editandoStockIndex = -1;
 }
 
 function cerrarModalStock() {
