@@ -332,3 +332,7 @@ body {
 .modal.mostrar {
     display: flex;
 }
+
+.mensaje {
+    display: none;
+}
