@@ -52,7 +52,7 @@ function login() {
         mostrarEstadisticas();
         renderHistorialDias();
     } else {
-        alert("Login incorrecto");
+        mostrarAlerta("Error", "Usuario o contraseña incorrectos");
     }
 }
 
@@ -119,7 +119,7 @@ function renderHistorial() {
 
 function eliminarProducto(i) {
 
-    if (!confirm("¿Eliminar este producto?")) return;
+    mostrarAlerta("Eliminar", "¿Seguro que querés eliminar este producto?");
 
     historialVentas.splice(i, 1);
 
@@ -455,4 +455,15 @@ function soloNumeros(event) {
     } else {
         event.preventDefault();
     }
+}
+
+function mostrarAlerta(titulo, texto) {
+    document.getElementById("alertaTitulo").textContent = titulo;
+    document.getElementById("alertaTexto").textContent = texto;
+
+    document.getElementById("modalAlerta").style.display = "flex";
+}
+
+function cerrarAlerta() {
+    document.getElementById("modalAlerta").style.display = "none";
 }
