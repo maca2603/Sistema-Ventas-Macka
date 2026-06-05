@@ -120,9 +120,9 @@
 
         <input type="text" id="editNombre" placeholder="Nombre">
 
-        <input type="number" id="editCantidad" placeholder="Cantidad" min="1">
-
-        <input type="number" id="editPrecio" placeholder="Precio" min="0">
+        <input type="text" id="editCantidad" placeholder="Cantidad" onkeydown="soloNumeros(event)">
+        
+        <input type="text" id="editPrecio" placeholder="Precio" onkeydown="soloNumeros(event)">
 
         <button onclick="guardarEdicion()">
             Guardar

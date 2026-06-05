@@ -441,3 +441,18 @@ function actualizarFechaHora() {
 setInterval(actualizarFechaHora, 1000);
 
 actualizarFechaHora();
+
+function soloNumeros(event) {
+    if (
+        (event.key >= '0' && event.key <= '9') ||
+        event.key === 'Backspace' ||
+        event.key === 'Delete' ||
+        event.key === 'ArrowLeft' ||
+        event.key === 'ArrowRight' ||
+        event.key === 'Tab'
+    ) {
+        return true;
+    } else {
+        event.preventDefault();
+    }
+}
