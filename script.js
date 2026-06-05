@@ -504,12 +504,19 @@ function mostrarConfirmacion(titulo, texto, callback) {
 
     modal.style.display = "flex";
 
-    document.getElementById("btnAceptar").onclick = () => {
+    // 🔥 importante: forzar estado limpio
+    let btnAceptar = document.getElementById("btnAceptar");
+    let btnCancelar = document.getElementById("btnCancelar");
+
+    btnAceptar.onclick = null;
+    btnCancelar.onclick = null;
+
+    btnAceptar.onclick = () => {
         modal.style.display = "none";
         callback(true);
     };
 
-    document.getElementById("btnCancelar").onclick = () => {
+    btnCancelar.onclick = () => {
         modal.style.display = "none";
         callback(false);
     };
