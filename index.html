@@ -10,16 +10,15 @@
 
 <body>
 
+<!-- ===================== ENCABEZADO ===================== -->
 <div class="encabezado">
 
     <h1 class="titulo-principal">Sistema de ventas</h1>
 
-    <button onclick="abrirStock()">Stock</button>
-
     <div id="fechaHora"></div>
 
     <div class="header-botones">
-        
+
         <button id="btnTema" onclick="cambiarTema()">🌙</button>
 
         <button id="btnCerrarSesion"
@@ -32,46 +31,89 @@
 
 </div>
 
-<!-- LOGIN -->
+<!-- ===================== LOGIN ===================== -->
 <div id="login">
 
     <h3>Login</h3>
 
     <input type="text" id="user" placeholder="Usuario"
-       onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
+        onkeydown="if(event.key==='Enter') document.getElementById('pass').focus()">
 
     <input type="password" id="pass" placeholder="Contraseña"
-       onkeydown="if(event.key==='Enter') login()">
+        onkeydown="if(event.key==='Enter') login()">
 
     <button onclick="login()">Ingresar</button>
 
 </div>
 
+<!-- ===================== APP PRINCIPAL ===================== -->
 <div id="app" style="display:none;">
 
-    <!-- BOTÓN STOCK ARRIBA DEL TODO -->
+    <!-- BOTÓN STOCK (SOLO DENTRO DEL SISTEMA) -->
     <button onclick="abrirStock()">Stock</button>
 
-    <!-- SISTEMA PRINCIPAL -->
+    <!-- ===================== SISTEMA DE VENTAS ===================== -->
     <div id="sistemaVentas">
 
         <div class="container">
 
             <!-- IZQUIERDA -->
             <div class="left">
-                ...
+
+                <h2>Venta</h2>
+
+                <input id="producto" type="text" placeholder="Producto"
+                    onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
+
+                <input id="precio" type="number" placeholder="Precio"
+                    onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
+
+                <input id="cantidad" type="number" value="1" min="1"
+                    onkeydown="if(event.key==='Enter') agregarVentaRapida()">
+
+                <button onclick="agregarVentaRapida()">Agregar venta</button>
+
+                <h3>Historial de ventas</h3>
+                <ul id="historial"></ul>
+
             </div>
 
             <!-- DERECHA -->
             <div class="right">
-                ...
+
+                <button onclick="cerrarCaja()">Finalizar venta</button>
+                <button onclick="limpiarTicket()">Limpiar ticket</button>
+
+                <h3>Ticket</h3>
+                <pre id="ticket"></pre>
+
+                <h3>Estadísticas del día</h3>
+                <div id="estadisticas"></div>
+
+                <h3>Historial días</h3>
+                <ul id="historialDias"></ul>
+
+                <h3 id="tituloTickets">Tickets Guardados (0)</h3>
+
+                <input type="date" id="buscarFecha">
+
+                <button onclick="buscarTicketsPorFecha()">
+                    Buscar
+                </button>
+
+                <button onclick="renderTickets()">
+                    Mostrar todos
+                </button>
+
+                <ul id="historialTickets"></ul>
+
             </div>
 
         </div>
 
     </div>
 
-    <!-- STOCK (PANTALLA OCULTA) -->
+    <!-- ===================== STOCK ===================== -->
     <div id="stockPage" style="display:none;">
 
         <h2>Stock de productos</h2>
@@ -85,76 +127,13 @@
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
 
-        <button onclick="volverAlSistema()">Volver</button>
+        <button onclick="volverAlSistema()">⬅ Volver</button>
 
     </div>
 
 </div>
 
-    <div class="container">
-
-        <!-- IZQUIERDA -->
-        <div class="left">
-
-            <h2>Venta</h2>
-
-            <input id="producto" type="text" placeholder="Producto"
-       onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
-
-            <input id="precio" type="number" placeholder="Precio"
-       onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
-
-            <input id="cantidad" type="number" value="1" min="1"
-       onkeydown="if(event.key==='Enter') agregarVentaRapida()">
-
-            <button onclick="agregarVentaRapida()">Agregar venta</button>
-
-            <h3>Historial de ventas</h3>
-
-            <!-- 🔥 ESTO ES LO QUE TE FALTABA -->
-            <ul id="historial"></ul>
-
-        </div>
-
-        <!-- DERECHA -->
-        <div class="right">
-
-            <button onclick="cerrarCaja()">Finalizar venta</button>
-
-            <button onclick="limpiarTicket()">Limpiar ticket</button>
-
-            <h3>Ticket</h3>
-            
-            <pre id="ticket"></pre>
-
-            <h3>Estadísticas del día</h3>
-            
-            <div id="estadisticas"></div>
-            
-            <h3>Historial Dias</h3>
-            
-            <ul id="historialDias"></ul>
-
-            <h3 id="tituloTickets">Tickets Guardados (0)</h3>
-
-            <input type="date" id="buscarFecha">
-
-            <button onclick="buscarTicketsPorFecha()">
-                Buscar
-            </button>
-
-            <button onclick="renderTickets()">
-                Mostrar todos
-            </button>
-            
-            <ul id="historialTickets"></ul>
-
-        </div>
-
-    </div>
-
-</div>
-
+<!-- ===================== MODAL EDITAR ===================== -->
 <div id="modalEditar" style="display:none;">
 
     <div class="modal-contenido">
@@ -179,6 +158,7 @@
 
 </div>
 
+<!-- ===================== MODAL ALERTA ===================== -->
 <div id="modalAlerta" class="modal" style="display:none;" onclick="cerrarAlerta(event)">
 
     <div class="modal-contenido">
