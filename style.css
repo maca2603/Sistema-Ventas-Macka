@@ -235,6 +235,9 @@ h2, h3 {
     background-color: #2f2f2f;
     color: #d46a92;
 }
+.modo-oscuro #estadisticas * {
+    color: #d46a92 !important;
+}
 
 /* historial ventas */
 .modo-oscuro #historial li {
