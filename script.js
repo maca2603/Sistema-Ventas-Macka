@@ -241,8 +241,8 @@ function renderTickets() {
 
                 <br><br>
 
-                <button onclick="toggleDetalle(${i}); event.stopPropagation();">
-                    Ver productos
+                <button onclick="toggleDetalle(${i}); event.stopPropagation();" id="btn-${i}">
+                    👁️
                 </button>
 
                 <button onclick="eliminarTicket(${i}, event); event.stopPropagation();">
@@ -259,11 +259,13 @@ function renderTickets() {
 function toggleDetalle(i) {
 
     let div = document.getElementById(`detalle-${i}`);
+    let btn = document.getElementById(`btn-${i}`);
 
-    if (!div) return;
+    if (!div || !btn) return;
 
     if (div.style.display === "block") {
         div.style.display = "none";
+        btn.textContent = "👁️"; // oculto
         return;
     }
 
@@ -274,6 +276,7 @@ function toggleDetalle(i) {
     ).join("");
 
     div.style.display = "block";
+    btn.textContent = "🚫👁️"; // visible
 }
 
 // =======================
