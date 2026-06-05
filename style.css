@@ -272,3 +272,11 @@ h2, h3 {
 body {
     font-size: 16px;
 }
+
+.modo-oscuro {
+    color: #d46a92 !important;
+}
+
+.modo-oscuro * {
+    color: #d46a92 !important;
+}
