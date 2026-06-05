@@ -142,13 +142,8 @@ function renderStock() {
             <li>
                 ${p.nombre} - $${p.precio} - Stock: ${p.cantidad}
 
-                <button onclick="editarStock(${i})">
-                    Editar
-                </button>
-
-                <button onclick="eliminarStock(${i})">
-                    Eliminar
-                </button>
+                <button onclick="editarStock(${i})">Editar</button>
+                <button onclick="eliminarStock(${i})">Eliminar</button>
             </li>
         `;
     });
@@ -156,12 +151,11 @@ function renderStock() {
 
 function eliminarStock(i) {
 
-    mostrarConfirmacion("Eliminar producto", "¿Seguro que querés eliminarlo?", (ok) => {
+    mostrarConfirmacion("Eliminar producto", "¿Seguro?", (ok) => {
 
         if (!ok) return;
 
         stock.splice(i, 1);
-
         localStorage.setItem("stock", JSON.stringify(stock));
         renderStock();
     });
@@ -171,17 +165,16 @@ function editarStock(i) {
 
     let p = stock[i];
 
-    let nuevoNombre = prompt("Nombre:", p.nombre);
-    let nuevoPrecio = prompt("Precio:", p.precio);
-    let nuevaCantidad = prompt("Cantidad:", p.cantidad);
+    let nombre = prompt("Nombre:", p.nombre);
+    let precio = prompt("Precio:", p.precio);
+    let cantidad = prompt("Cantidad:", p.cantidad);
 
-    if (!nuevoNombre || isNaN(nuevoPrecio) || isNaN(nuevaCantidad)) return;
+    if (!nombre || isNaN(precio) || isNaN(cantidad)) return;
 
     stock[i] = {
-        ...p,
-        nombre: nuevoNombre.toLowerCase(),
-        precio: Number(nuevoPrecio),
-        cantidad: Number(nuevaCantidad)
+        nombre: nombre.toLowerCase(),
+        precio: Number(precio),
+        cantidad: Number(cantidad)
     };
 
     localStorage.setItem("stock", JSON.stringify(stock));
