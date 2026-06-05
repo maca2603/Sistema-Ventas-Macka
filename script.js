@@ -137,10 +137,18 @@ function renderStock() {
     let lista = document.getElementById("listaStock");
     lista.innerHTML = "";
 
-    stock.forEach((p) => {
+    stock.forEach((p, i) => {
         lista.innerHTML += `
             <li>
                 ${p.nombre} - $${p.precio} - Stock: ${p.cantidad}
+
+                <button onclick="editarStock(${i})">
+                    Editar
+                </button>
+
+                <button onclick="eliminarStock(${i})">
+                    Eliminar
+                </button>
             </li>
         `;
     });
