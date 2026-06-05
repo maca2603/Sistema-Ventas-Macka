@@ -458,10 +458,14 @@ function soloNumeros(event) {
 }
 
 function mostrarAlerta(titulo, texto) {
+    let modal = document.getElementById("modalAlerta");
+
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
-    document.getElementById("modalAlerta").classList.add("mostrar");
+    modal.style.display = "flex";
+    modal.style.justifyContent = "center";
+    modal.style.alignItems = "center";
 }
 
 function cerrarAlerta() {
