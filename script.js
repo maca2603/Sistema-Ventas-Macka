@@ -140,12 +140,22 @@ function editarProducto(i) {
 
     if (nuevaCantidad === null) return;
 
+    if (isNaN(nuevaCantidad) || Number(nuevaCantidad) <= 0) {
+        alert("La cantidad debe ser un número válido.");
+        return;
+    }
+
     let nuevoPrecio = prompt(
         "Precio unitario:",
         historialVentas[i].total / historialVentas[i].cantidad
     );
 
     if (nuevoPrecio === null) return;
+
+    if (isNaN(nuevoPrecio) || Number(nuevoPrecio) < 0) {
+        alert("El precio debe ser un número válido.");
+        return;
+    }
 
     historialVentas[i].nombre = nuevoNombre;
     historialVentas[i].cantidad = Number(nuevaCantidad);
