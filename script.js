@@ -523,9 +523,4 @@ document.addEventListener("keydown", function (event) {
         event.preventDefault(); // 🔥 clave
         document.getElementById("btnAceptar").click();
     }
-
-    if (event.key === "Escape") {
-        event.preventDefault();
-        document.getElementById("btnCancelar").click();
-    }
 });
