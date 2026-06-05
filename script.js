@@ -5,6 +5,8 @@
 let productos = [];
 let ventaActual = [];
 
+let indiceEditando = -1;
+
 let ventas = Number(localStorage.getItem("ventas")) || 0;
 let ventasDelDia = Number(localStorage.getItem("ventasDelDia")) || 0;
 
@@ -126,43 +128,42 @@ function eliminarProducto(i) {
 
 function editarProducto(i) {
 
-    let nuevoNombre = prompt(
-        "Nombre del producto:",
-        historialVentas[i].nombre
-    );
+    indiceEditando = i;
 
-    if (nuevoNombre === null) return;
+    document.getElementById("editNombre").value =
+        historialVentas[i].nombre;
 
-    let nuevaCantidad = prompt(
-        "Cantidad:",
-        historialVentas[i].cantidad
-    );
+    document.getElementById("editCantidad").value =
+        historialVentas[i].cantidad;
 
-    if (nuevaCantidad === null) return;
+    document.getElementById("editPrecio").value =
+        historialVentas[i].total / historialVentas[i].cantidad;
 
-    if (isNaN(Number(nuevaCantidad)) || Number(nuevaCantidad) <= 0) {
-        alert("La cantidad debe contener solo números mayores a 0.");
-        return;
-    }
+    document.getElementById("modalEditar").style.display = "flex";
+}
 
-    let nuevoPrecio = prompt(
-        "Precio unitario:",
-        historialVentas[i].total / historialVentas[i].cantidad
-    );
+function cerrarModalEditar() {
+    document.getElementById("modalEditar").style.display = "none";
+}
 
-    if (nuevoPrecio === null) return;
+function guardarEdicion() {
 
-    if (isNaN(Number(nuevoPrecio)) || Number(nuevoPrecio) < 0) {
-        alert("El precio debe contener solo números válidos.");
-        return;
-    }
+    let nombre =
+        document.getElementById("editNombre").value;
 
-    historialVentas[i].nombre = nuevoNombre;
-    historialVentas[i].cantidad = Number(nuevaCantidad);
-    historialVentas[i].total =
-        Number(nuevaCantidad) * Number(nuevoPrecio);
+    let cantidad =
+        Number(document.getElementById("editCantidad").value);
+
+    let precio =
+        Number(document.getElementById("editPrecio").value);
+
+    historialVentas[indiceEditando].nombre = nombre;
+    historialVentas[indiceEditando].cantidad = cantidad;
+    historialVentas[indiceEditando].total = cantidad * precio;
 
     renderHistorial();
+
+    cerrarModalEditar();
 }
 
 // =======================

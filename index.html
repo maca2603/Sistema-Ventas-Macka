@@ -112,6 +112,30 @@
 
 </div>
 
+<div id="modalEditar" style="display:none;">
+
+    <div class="modal-contenido">
+
+        <h3>Editar producto</h3>
+
+        <input type="text" id="editNombre" placeholder="Nombre">
+
+        <input type="number" id="editCantidad" placeholder="Cantidad" min="1">
+
+        <input type="number" id="editPrecio" placeholder="Precio" min="0">
+
+        <button onclick="guardarEdicion()">
+            Guardar
+        </button>
+
+        <button onclick="cerrarModalEditar()">
+            Cancelar
+        </button>
+
+    </div>
+
+</div>
+
 <script src="script.js"></script>
 
 </body>
