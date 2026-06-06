@@ -121,7 +121,7 @@
 
     <h2>Stock de productos</h2>
 
-        <div onsubmit="event.preventDefault(); agregarProducto();">
+        <form onsubmit="event.preventDefault(); agregarProducto();">
 
         <input id="stockNombre" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
         <input id="stockPrecio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
@@ -129,7 +129,7 @@
 
         <button type="submit">Agregar producto</button>
 
-        </div>
+        </form>
 
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
