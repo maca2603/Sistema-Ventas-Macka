@@ -55,6 +55,7 @@ function login() {
         renderTickets();
         mostrarEstadisticas();
         renderHistorialDias();
+        renderStock();
     } else {
         mostrarAlerta("Error", "Usuario o contraseña incorrectos");
     }
@@ -63,6 +64,8 @@ function login() {
 function abrirStock() {
     document.getElementById("sistemaVentas").style.display = "none";
     document.getElementById("stockPage").style.display = "block";
+
+    renderStock();
 }
 
 function volverAlSistema() {
@@ -85,7 +88,7 @@ function agregarVentaRapida() {
     let precio = Number(document.getElementById("precio").value);
     let cantidad = Number(document.getElementById("cantidad").value);
 
-    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+    if (!entrada || isNaN(precio) || isNaN(cantidad)) {
         alert("Completa todo");
         return;
     }
@@ -93,7 +96,7 @@ function agregarVentaRapida() {
     let total = precio * cantidad;
 
     historialVentas.push({
-        nombre,
+        nombre: entrada,
         cantidad,
         total
     });
