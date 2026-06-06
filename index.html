@@ -62,8 +62,9 @@
 
                 <h2>Venta</h2>
 
-                <input id="producto" type="text" placeholder="Producto"
+                <input id="producto" type="text" list="productosStock" placeholder="Producto"
                     onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
+                    <datalist id="productosStock"></datalist>
 
                 <input id="precio" type="number" placeholder="Precio"
                     onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
