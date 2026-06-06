@@ -767,6 +767,13 @@ function agregarProducto() {
         return;
     }
 
+    let existe = stock.find (p => p.nombre.toLowerCase() === nombre.toLowerCase());
+
+    if (existe) {
+        mostrarAlerta ("Producto existente", "Ya existe un producto con ese nombre.");
+        return;
+    }
+
     stock.push({
         id: Date.now(),
         nombre,
