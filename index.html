@@ -66,10 +66,10 @@
                     onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
                     <datalist id="productosStock"></datalist>
 
-                <input id="precio" type="text" onkeydown="soloNumerosInput(event)"
+                <input id="precio" type="text" placeholder="Precio" onkeydown="soloNumerosInput(event)"
                     onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
 
-                <input id="cantidad" type="text" onkeydown="soloNumerosInput(event)"
+                <input id="cantidad" type="text" placeholder="Cantidad" onkeydown="soloNumerosInput(event)"
                     onkeydown="if(event.key==='Enter') agregarVentaRapida()">
 
                 <button onclick="agregarVentaRapida()">Agregar venta</button>
@@ -123,9 +123,9 @@
 
         <form onsubmit="event.preventDefault(); agregarProducto();">
 
-        <input id="stockNombre" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
-        <input id="stockPrecio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
-        <input id="stockCantidad" onkeydown="if(event.key==='Enter'){ agregarProducto(); }">
+        <input id="stockNombre" placeholder="Producto" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
+        <input id="stockPrecio" placeholder="Precio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
+        <input id="stockCantidad" placeholder="Cantidad" onkeydown="if(event.key==='Enter'){ agregarProducto(); }">
 
         <button type="submit">Agregar producto</button>
 

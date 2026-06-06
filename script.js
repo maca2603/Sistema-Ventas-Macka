@@ -144,7 +144,7 @@ if (productoStock) {
         total
     });
 
-    descontarStock(entrada, cantidad);
+    // descontarStock(entrada, cantidad);
 
     renderHistorial();
 
@@ -313,6 +313,7 @@ function cerrarCaja() {
     historialVentas.forEach(v => {
         texto += `${v.nombre} x${v.cantidad} = $${v.total}\n`;
         total += v.total;
+        descontarStock(v.nombre, v.cantidad);
     });
 
     texto += "\n-----------------\n";
