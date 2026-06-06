@@ -718,6 +718,8 @@ function agregarProducto() {
     renderStock();
     actualizarListaProductos();
 
+    console.log(stock);
+
     document.getElementById("stockNombre").value = "";
     document.getElementById("stockPrecio").value = "";
     document.getElementById("stockCantidad").value = "";
