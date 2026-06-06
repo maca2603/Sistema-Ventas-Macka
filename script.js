@@ -735,11 +735,27 @@ function cerrarModalStock() {
 function agregarProducto() {
 
     let nombre = document.getElementById("stockNombre").value.trim();
-    let precio = Number(document.getElementById("stockPrecio").value);
-    let cantidad = Number(document.getElementById("stockCantidad").value);
+    let precioInput = document.getElementById("stockPrecio").value.trim();
+    let cantidadInput = document.getElementById("stockCantidad").value.trim();
 
-    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+    // 🔴 VALIDACIÓN 1: campos vacíos
+    if (nombre === "" || precioInput === "" || cantidadInput === "") {
         mostrarAlerta("Error", "Completa todos los campos");
+        return;
+    }
+
+    let precio = Number(precioInput);
+    let cantidad = Number(cantidadInput);
+
+    // 🔴 VALIDACIÓN 2: números inválidos
+    if (isNaN(precio) || isNaN(cantidad)) {
+        mostrarAlerta("Error", "Precio y cantidad deben ser números");
+        return;
+    }
+
+    // 🔴 VALIDACIÓN 3: negativos
+    if (precio <= 0 || cantidad <= 0) {
+        mostrarAlerta("Error", "Precio y cantidad deben ser mayores a 0");
         return;
     }
 
@@ -754,8 +770,6 @@ function agregarProducto() {
 
     renderStock();
     actualizarListaProductos();
-
-    console.log(stock);
 
     document.getElementById("stockNombre").value = "";
     document.getElementById("stockPrecio").value = "";
