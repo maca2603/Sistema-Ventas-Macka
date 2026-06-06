@@ -172,16 +172,15 @@ function editarStock(i) {
 
 function descontarStock(nombre, cantidad) {
 
-    console.log(stock);
-    console.log(nombre);
-
     let producto = stock.find(
         p => p.nombre.toLowerCase() === nombre.toLowerCase().trim()
     );
 
+    console.log("Producto encontrado:", producto);
+
     if (!producto) return;
 
-    producto.cantidad -= cantidad;
+    producto.cantidad -= Number(cantidad);
 
     if (producto.cantidad < 0) {
         producto.cantidad = 0;
@@ -763,9 +762,13 @@ function autocompletarPrecio() {
 
     let nombre = document.getElementById("producto").value.trim();
 
+    console.log("Buscando:", nombre);
+
     let producto = stock.find(
         p => p.nombre.toLowerCase() === nombre.toLowerCase()
     );
+
+    console.log("Encontrado:", producto);
 
     if (producto) {
         document.getElementById("precio").value = producto.precio;
