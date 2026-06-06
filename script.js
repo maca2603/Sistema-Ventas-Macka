@@ -689,3 +689,30 @@ function cerrarModalStock() {
     document.getElementById("modalStock").style.display = "none";
     editandoStockIndex = -1;
 }
+
+function agregarProducto() {
+
+    let nombre = document.getElementById("stockNombre").value.trim();
+    let precio = Number(document.getElementById("stockPrecio").value);
+    let cantidad = Number(document.getElementById("stockCantidad").value);
+
+    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+        mostrarAlerta("Error", "Completa todos los campos");
+        return;
+    }
+
+    stock.push({
+        id: Date.now(),
+        nombre,
+        precio,
+        cantidad
+    });
+
+    localStorage.setItem("stock", JSON.stringify(stock));
+
+    renderStock();
+
+    document.getElementById("stockNombre").value = "";
+    document.getElementById("stockPrecio").value = "";
+    document.getElementById("stockCantidad").value = "";
+}
