@@ -99,7 +99,11 @@ function agregarVentaRapida() {
     let precio = Number(document.getElementById("precio").value);
     let cantidad = Number(document.getElementById("cantidad").value);
 
-    if (!entrada || isNaN(precio) || isNaN(cantidad)) {
+    if (
+    entrada === "" ||
+    document.getElementById("precio").value.trim() === "" ||
+    document.getElementById("cantidad").value.trim() === ""
+) {
     mostrarAlerta("Error", "Completa todos los campos");
     return;
 }
