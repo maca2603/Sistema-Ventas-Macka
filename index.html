@@ -123,9 +123,9 @@
 
         <form onsubmit="event.preventDefault(); agregarProducto();">
 
-        <input id="stockNombre" placeholder="Producto" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
-        <input id="stockPrecio" placeholder="Precio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
-        <input id="stockCantidad" placeholder="Cantidad" onkeydown="if(event.key==='Enter'){ agregarProducto(); }">
+        <input id="stockNombre" placeholder="Producto" onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('stockPrecio').focus();}">
+        <input id="stockPrecio" placeholder="Precio" onkeydown="if(event.key==='Enter'){event.preventDefault(); document.getElementById('stockCantidad').focus();}">
+        <input id="stockCantidad" placeholder="Cantidad" onkeydown="if(event.key==='Enter'){event.preventDefault(); agregarProducto();}">
 
         <button type="submit">Agregar producto</button>
 
