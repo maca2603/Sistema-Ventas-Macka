@@ -100,9 +100,9 @@ function agregarVentaRapida() {
     let cantidad = Number(document.getElementById("cantidad").value);
 
     if (!entrada || isNaN(precio) || isNaN(cantidad)) {
-        alert("Completa todo");
-        return;
-    }
+    mostrarAlerta("Error", "Completa todos los campos");
+    return;
+}
 
     let total = precio * cantidad;
 
