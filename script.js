@@ -108,6 +108,29 @@ function agregarVentaRapida() {
         return;
     }
 
+    let productoStock = stock.find(
+    p => p.nombre.toLowerCase() === entrada.toLowerCase()
+);
+
+if (productoStock) {
+
+    if (productoStock.cantidad <= 0) {
+        mostrarAlerta(
+            "Sin stock",
+            "No hay stock disponible de este producto."
+        );
+        return;
+    }
+
+    if (cantidad > productoStock.cantidad) {
+        mostrarAlerta(
+            "Stock insuficiente",
+            `Solo quedan ${productoStock.cantidad} unidades disponibles.`
+        );
+        return;
+    }
+}
+
     let total = precio * cantidad;
 
     historialVentas.push({
