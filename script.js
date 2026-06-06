@@ -56,6 +56,7 @@ function login() {
         mostrarEstadisticas();
         renderHistorialDias();
         renderStock();
+        actualizarListaProductos();
     } else {
         mostrarAlerta("Error", "Usuario o contraseña incorrectos");
     }
@@ -66,6 +67,7 @@ function abrirStock() {
     document.getElementById("stockPage").style.display = "block";
 
     renderStock();
+    actualizarListaProductos();
 }
 
 function volverAlSistema() {
@@ -714,8 +716,20 @@ function agregarProducto() {
     localStorage.setItem("stock", JSON.stringify(stock));
 
     renderStock();
+    actualizarListaProductos();
 
     document.getElementById("stockNombre").value = "";
     document.getElementById("stockPrecio").value = "";
     document.getElementById("stockCantidad").value = "";
+}
+
+function actualizarListaProductos() {
+
+    let lista = document.getElementById("productosStock");
+
+    lista.innerHTML = "";
+
+    stock.forEach(producto => {
+        lista.innerHTML += `<option value="${producto.nombre}">`;
+    });
 }
