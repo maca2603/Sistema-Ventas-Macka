@@ -638,15 +638,14 @@ function mostrarConfirmacion(titulo, texto, callback) {
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
-    botonSeleccionado = "aceptar";
-    btnAceptar.focus();
-
-    modal.style.display = "flex";
-    btnAceptar.focus();
-
-    // 🔥 importante: forzar estado limpio
     let btnAceptar = document.getElementById("btnAceptar");
     let btnCancelar = document.getElementById("btnCancelar");
+
+    botonSeleccionado = "aceptar";
+
+    modal.style.display = "flex";
+
+    btnAceptar.focus();
 
     btnAceptar.onclick = null;
     btnCancelar.onclick = null;
