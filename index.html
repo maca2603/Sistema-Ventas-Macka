@@ -62,7 +62,7 @@
 
                 <h2>Venta</h2>
 
-                <input id="producto" type="text" list="productosStock" placeholder="Producto"
+                <input id="producto" type="text" list="productosStock" placeholder="Producto" oninput="autocompletarPrecio()"
                     onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
                     <datalist id="productosStock"></datalist>
 

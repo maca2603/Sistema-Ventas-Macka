@@ -743,3 +743,14 @@ function actualizarListaProductos() {
         lista.appendChild(option);
     });
 }
+
+function autocompletarPrecio() {
+
+    let nombre = document.getElementById("producto").value;
+
+    let producto = stock.find(p => p.nombre === nombre.trim().toLowerCase());
+
+    if (producto) {
+        document.getElementById("precio").value = producto.precio;
+    }
+}
