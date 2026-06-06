@@ -754,3 +754,30 @@ function autocompletarPrecio() {
         document.getElementById("precio").value = producto.precio;
     }
 }
+
+document.getElementById("modalStockNombre").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("modalStockPrecio").focus();
+    }
+
+});
+
+document.getElementById("modalStockPrecio").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("modalStockCantidad").focus();
+    }
+
+});
+
+document.getElementById("modalStockCantidad").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        guardarStockModal();
+    }
+
+});
