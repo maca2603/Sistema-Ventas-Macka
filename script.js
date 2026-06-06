@@ -642,7 +642,6 @@ function mostrarConfirmacion(titulo, texto, callback) {
     btnAceptar.focus();
 
     modal.style.display = "flex";
-    btnAceptar.focus();
 
     // 🔥 importante: forzar estado limpio
     let btnAceptar = document.getElementById("btnAceptar");
