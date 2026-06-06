@@ -119,16 +119,15 @@
 
         <h2>Stock de productos</h2>
 
-        <input id="stockNombre" placeholder="Nombre"
-        onkeydown="if(event.key==='Enter') document.getElementById('stockPrecio').focus()">
+        <form onsubmit="event.preventDefault(); agregarProducto();">
 
-        <input id="stockPrecio" type="number" placeholder="Precio"
-        onkeydown="if(event.key==='Enter') document.getElementById('stockCantidad').focus()">
+        <input id="stockNombre" placeholder="Nombre">
+        <input id="stockPrecio" type="number" placeholder="Precio">
+        <input id="stockCantidad" type="number" placeholder="Cantidad">
 
-        <input id="stockCantidad" type="number" placeholder="Cantidad"
-        onkeydown="if(event.key==='Enter') agregarProducto()">
+        <button type="submit">Agregar producto</button>
 
-        <button onclick="agregarProducto()">Agregar producto</button>
+        </form>
 
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
