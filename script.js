@@ -95,20 +95,17 @@ function cerrarSesion() {
 
 function agregarVentaRapida() {
 
-    console.log("Entró a agregarVentaRapida");
-
     let entrada = document.getElementById("producto").value.trim();
     let precio = Number(document.getElementById("precio").value);
     let cantidad = Number(document.getElementById("cantidad").value);
 
-    if (!entrada || isNaN(precio) || isNaN(cantidad)) {
-
-        console.log("Debería mostrar modal");
-
-        mostrarAlerta("Error", "Completa todos los campos");
-        return;
-    }
-
+    if (
+    entrada === "" ||
+    document.getElementById("precio").value.trim() === "" ||
+    document.getElementById("cantidad").value.trim() === ""
+) {
+    mostrarAlerta("Error", "Completa todos los campos");
+    return;
 }
 
     let total = precio * cantidad;
