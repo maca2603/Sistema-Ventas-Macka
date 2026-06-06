@@ -123,18 +123,13 @@
 
         <form onsubmit="event.preventDefault(); agregarProducto();">
 
-    <label>Producto</label>
-    <input id="stockNombre" placeholder="Ej: Coca Cola">
+        <input id="stockNombre" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
+        <input id="stockPrecio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
+        <input id="stockCantidad" onkeydown="if(event.key==='Enter'){ agregarProducto(); }">
 
-    <label>Precio</label>
-    <input id="stockPrecio" placeholder="Ej: 1500">
+        <button type="submit">Agregar producto</button>
 
-    <label>Cantidad</label>
-    <input id="stockCantidad" placeholder="Ej: 10">
-
-    <button type="submit">Agregar producto</button>
-
-</form>
+        </form>
 
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
