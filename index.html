@@ -66,10 +66,10 @@
                     onkeydown="if(event.key==='Enter') document.getElementById('precio').focus()">
                     <datalist id="productosStock"></datalist>
 
-                <input id="precio" type="number" placeholder="Precio"
+                <input id="precio" type="text" onkeydown="soloNumerosInput(event)"
                     onkeydown="if(event.key==='Enter') document.getElementById('cantidad').focus()">
 
-                <input id="cantidad" type="number" value="1" min="1"
+                <input id="cantidad" type="text" onkeydown="soloNumerosInput(event)"
                     onkeydown="if(event.key==='Enter') agregarVentaRapida()">
 
                 <button onclick="agregarVentaRapida()">Agregar venta</button>

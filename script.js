@@ -99,6 +99,11 @@ function agregarVentaRapida() {
     let precio = Number(document.getElementById("precio").value);
     let cantidad = Number(document.getElementById("cantidad").value);
 
+    if (isNaN(precio) || isNaN(cantidad) || precio <= 0 || cantidad <= 0) {
+    mostrarAlerta("Error", "Precio y cantidad deben ser válidos");
+    return;
+}
+
     if (
         entrada === "" ||
         document.getElementById("precio").value.trim() === "" ||
@@ -326,6 +331,7 @@ function cerrarCaja() {
         contenido: texto
     });
 
+    ventasDelDia += total;
     historialVentas = [];
 
     renderHistorial();
@@ -596,18 +602,19 @@ function mostrarAlerta(titulo, texto) {
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
-    // ocultamos botón cancelar si es solo mensaje
-    document.getElementById("btnCancelar").style.display = "none";
-    document.getElementById("btnAceptar").textContent = "OK";
+    let btnAceptar = document.getElementById("btnAceptar");
+    let btnCancelar = document.getElementById("btnCancelar");
+
+    btnCancelar.style.display = "none";
+
+    btnAceptar.textContent = "OK";
 
     modal.style.display = "flex";
 
-    document.getElementById("btnAceptar").onclick = () => {
+    btnAceptar.onclick = () => {
         modal.style.display = "none";
-
-        // restaurar botones
-        document.getElementById("btnCancelar").style.display = "inline-block";
-        document.getElementById("btnAceptar").textContent = "Aceptar";
+        btnCancelar.style.display = "inline-block";
+        btnAceptar.textContent = "Aceptar";
     };
 }
 
@@ -694,10 +701,10 @@ function guardarStockModal() {
     let precio = Number(document.getElementById("modalStockPrecio").value);
     let cantidad = Number(document.getElementById("modalStockCantidad").value);
 
-    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
-        mostrarAlerta("Error", "Completa todos los campos");
-        return;
-    }
+    if (!nombre || precio <= 0 || cantidad <= 0 || isNaN(precio) || isNaN(cantidad)) {
+    mostrarAlerta("Error", "Datos inválidos");
+    return;
+}
 
     if (editandoStockIndex !== -1) {
 
@@ -809,5 +816,12 @@ function autocompletarPrecio() {
 
     if (producto) {
         document.getElementById("precio").value = producto.precio;
+    }
+}
+
+function soloNumerosInput(e) {
+    if (!/[0-9]/.test(e.key) &&
+        !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)) {
+        e.preventDefault();
     }
 }
