@@ -738,14 +738,10 @@ function agregarProducto() {
     let precio = Number(document.getElementById("stockPrecio").value);
     let cantidad = Number(document.getElementById("stockCantidad").value);
 
-    if (
-    nombre.trim() === "" ||
-    document.getElementById("stockPrecio").value.trim() === "" ||
-    document.getElementById("stockCantidad").value.trim() === ""
-) {
-    mostrarAlerta("Error", "Completa todos los campos");
-    return;
-}
+    if (!nombre || isNaN(precio) || isNaN(cantidad)) {
+        mostrarAlerta("Error", "Completa todos los campos");
+        return;
+    }
 
     stock.push({
         id: Date.now(),
