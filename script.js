@@ -82,8 +82,11 @@ function volverAlSistema() {
 }
 
 function cerrarSesion() {
+
     document.getElementById("app").style.display = "none";
     document.getElementById("login").style.display = "block";
+
+    document.getElementById("btnCerrarSesion").style.display = "none";
 }
 
 // =======================
