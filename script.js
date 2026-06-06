@@ -63,16 +63,22 @@ function login() {
 }
 
 function abrirStock() {
+
     document.getElementById("sistemaVentas").style.display = "none";
     document.getElementById("stockPage").style.display = "block";
+
+    document.getElementById("btnStock").style.display = "none";
 
     renderStock();
     actualizarListaProductos();
 }
 
 function volverAlSistema() {
+
     document.getElementById("stockPage").style.display = "none";
     document.getElementById("sistemaVentas").style.display = "block";
+
+    document.getElementById("btnStock").style.display = "inline-block";
 }
 
 function cerrarSesion() {
