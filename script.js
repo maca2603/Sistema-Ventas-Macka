@@ -24,6 +24,8 @@ let editandoStockIndex = -1;
 let hoy = new Date().toLocaleDateString();
 let Fecha = localStorage.getItem("Fecha");
 
+let botonSeleccionado = "aceptar"; // para controlar Enter en modales
+
 // =======================
 // REINICIO DE DIA
 // =======================
@@ -636,6 +638,9 @@ function mostrarConfirmacion(titulo, texto, callback) {
     document.getElementById("alertaTitulo").textContent = titulo;
     document.getElementById("alertaTexto").textContent = texto;
 
+    botonSeleccionado = "aceptar";
+    btnAceptar.focus();
+
     modal.style.display = "flex";
 
     // 🔥 importante: forzar estado limpio
@@ -656,30 +661,39 @@ function mostrarConfirmacion(titulo, texto, callback) {
     };
 }
 
-document.addEventListener("keydown", function (event) {
-
+document.addEventListener("keydown", function(event) {
     const modal = document.getElementById("modalAlerta");
 
-    const modalAbierto = modal.style.display === "flex";
+    if (modal.style.display !== "flex") return;
 
-    // 🔥 si modal abierto → Enter SOLO sirve para modal
-    if (modalAbierto) {
+    const btnAceptar = document.getElementById("btnAceptar");
+    const btnCancelar = document.getElementById("btnCancelar");
 
-        if (event.key === "Enter") {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            document.getElementById("btnAceptar").click();
-        }
+    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
 
-        if (event.key === "Escape") {
-            event.preventDefault();
-            event.stopImmediatePropagation();
-            document.getElementById("btnCancelar").click();
-        }
-
-        return; // ❌ no deja que nada más se ejecute
+        botonSeleccionado = "aceptar";
+        btnAceptar.focus();
     }
 
+    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+
+        botonSeleccionado = "cancelar";
+        btnCancelar.focus();
+    }
+
+    if (event.key === "Enter") {
+
+        event.preventDefault();
+
+        if (botonSeleccionado === "aceptar") {
+            btnAceptar.click();
+        } else {
+            btnCancelar.click();
+        }
+    }
+    if (event.key === "Escape") {
+        btnCancelar.click();
+    }
 }, true);
 
 function abrirModalStock() {
