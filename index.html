@@ -125,7 +125,7 @@
         onkeydown="if(event.key==='Enter') document.getElementById('stockCantidad').focus()">
 
         <input id="stockCantidad" type="number" placeholder="Cantidad"
-        onkeydown="if(event.key==='Enter') abrirModalStock()"
+        onkeydown="if(event.key==='Enter') document.getElementById('stockCantidad').blur()">
 
         <button onclick="abrirModalStock()">Agregar producto</button>
 

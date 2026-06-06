@@ -646,7 +646,9 @@ function abrirModalStock() {
 
 function guardarStockModal() {
 
-    let nombre = document.getElementById("modalStockNombre").value;
+    let modal = document.getElementById("modalStock");
+
+    let nombre = document.getElementById("modalStockNombre").value.trim();
     let precio = Number(document.getElementById("modalStockPrecio").value);
     let cantidad = Number(document.getElementById("modalStockCantidad").value);
 
@@ -659,7 +661,7 @@ function guardarStockModal() {
 
         stock[editandoStockIndex] = {
             id: stock[editandoStockIndex].id,
-            nombre: nombre.toLowerCase().trim(),
+            nombre,
             precio,
             cantidad
         };
@@ -668,7 +670,7 @@ function guardarStockModal() {
 
         stock.push({
             id: Date.now(),
-            nombre: nombre.toLowerCase().trim(),
+            nombre,
             precio,
             cantidad
         });
@@ -676,10 +678,10 @@ function guardarStockModal() {
 
     localStorage.setItem("stock", JSON.stringify(stock));
 
-    cerrarModalStock();   // 🔥 CLAVE (esto evita el bug)
+    cerrarModalStock();
+
     renderStock();
 
-    // limpiar estado
     editandoStockIndex = -1;
 }
 
