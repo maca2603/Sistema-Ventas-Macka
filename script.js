@@ -821,8 +821,16 @@ function autocompletarPrecio() {
 }
 
 function soloNumerosInput(e) {
-    if (!/[0-9]/.test(e.key) &&
-        !["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"].includes(e.key)) {
-        e.preventDefault();
+    if (
+        (e.key >= '0' && e.key <= '9') ||
+        e.key === 'Backspace' ||
+        e.key === 'Delete' ||
+        e.key === 'ArrowLeft' ||
+        e.key === 'ArrowRight' ||
+        e.key === 'Tab' ||
+        e.key === 'Enter'
+    ) {
+        return true;
     }
+    e.preventDefault();
 }
