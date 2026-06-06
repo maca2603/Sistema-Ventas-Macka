@@ -506,8 +506,8 @@ function buscarTicketsPorFecha() {
 
                 <br><br>
 
-                <button onclick="toggleDetalle(${i})">
-                    Ver productos
+                <button onclick="toggleDetalle(${i}); event.stopPropagation();" id="btn-${i}">
+                👁️
                 </button>
 
                 <button onclick="eliminarTicket(${i}, event); event.stopPropagation();">
