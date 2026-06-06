@@ -123,9 +123,9 @@
 
         <div onsubmit="event.preventDefault(); agregarProducto();">
 
-        <input id="stockNombre" placeholder="Nombre">
-        <input id="stockPrecio" type="number" placeholder="Precio">
-        <input id="stockCantidad" type="number" placeholder="Cantidad">
+        <input id="stockNombre" onkeydown="if(event.key==='Enter'){ document.getElementById('stockPrecio').focus(); }">
+        <input id="stockPrecio" onkeydown="if(event.key==='Enter'){ document.getElementById('stockCantidad').focus(); }">
+        <input id="stockCantidad" onkeydown="if(event.key==='Enter'){ agregarProducto(); }">
 
         <button type="submit">Agregar producto</button>
 
