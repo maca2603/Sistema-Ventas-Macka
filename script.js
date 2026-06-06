@@ -100,13 +100,13 @@ function agregarVentaRapida() {
     let cantidad = Number(document.getElementById("cantidad").value);
 
     if (
-    entrada === "" ||
-    document.getElementById("precio").value.trim() === "" ||
-    document.getElementById("cantidad").value.trim() === ""
-) {
-    mostrarAlerta("Error", "Completa todos los campos");
-    return;
-}
+        entrada === "" ||
+        document.getElementById("precio").value.trim() === "" ||
+        document.getElementById("cantidad").value.trim() === ""
+    ) {
+        mostrarAlerta("Error", "Completa todos los campos");
+        return;
+    }
 
     let total = precio * cantidad;
 
