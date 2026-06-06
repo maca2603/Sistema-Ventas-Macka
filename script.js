@@ -781,3 +781,30 @@ document.getElementById("modalStockCantidad").addEventListener("keydown", functi
     }
 
 });
+
+document.getElementById("stockNombre").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("stockPrecio").focus();
+    }
+
+});
+
+document.getElementById("stockPrecio").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        document.getElementById("stockCantidad").focus();
+    }
+
+});
+
+document.getElementById("stockCantidad").addEventListener("keydown", function(e) {
+
+    if (e.key === "Enter") {
+        e.preventDefault();
+        agregarProducto();
+    }
+
+});

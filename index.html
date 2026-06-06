@@ -119,7 +119,7 @@
 
         <h2>Stock de productos</h2>
 
-        <form onsubmit="event.preventDefault(); agregarProducto();">
+        <div onsubmit="event.preventDefault(); agregarProducto();">
 
         <input id="stockNombre" placeholder="Nombre">
         <input id="stockPrecio" type="number" placeholder="Precio">
@@ -127,7 +127,7 @@
 
         <button type="submit">Agregar producto</button>
 
-        </form>
+        </div>
 
         <h3>Lista de stock</h3>
         <ul id="listaStock"></ul>
