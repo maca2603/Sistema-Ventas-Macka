@@ -728,10 +728,18 @@ function agregarProducto() {
 function actualizarListaProductos() {
 
     let lista = document.getElementById("productosStock");
-
     lista.innerHTML = "";
 
     stock.forEach(producto => {
-        lista.innerHTML += `<option value="${producto.nombre}">`;
+
+        let option = document.createElement("option");
+
+        // mostramos nombre pero guardamos ID escondido en value
+        option.value = producto.nombre;
+
+        // truco: guardamos precio en dataset simulado
+        option.setAttribute("data-precio", producto.precio);
+
+        lista.appendChild(option);
     });
 }
