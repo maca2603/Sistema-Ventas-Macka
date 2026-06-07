@@ -365,3 +365,18 @@ body {
     font-weight: bold;
     color: #d46a92;
 }
+
+#tituloHora{
+    display: flex;
+    flex-direction: column;
+}
+
+#fechaHora{
+    margin-top: 5px;
+    font-size: 14px;
+    color: #d46a92;
+}
+
+.titulo-principal{
+    margin: 0;
+}
