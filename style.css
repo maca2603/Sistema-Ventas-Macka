@@ -347,9 +347,21 @@ body {
     z-index: 9999;
 }
 
+#logoTitulo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 #logoMacka{
     width: 80px;
     height: 80px;
     object-fit: contain;
-    margin-right: 15px;
+}
+
+.titulo-principal{
+    margin: 0;
+    font-size: 42px !important;
+    font-weight: bold;
+    color: #d46a92;
 }
