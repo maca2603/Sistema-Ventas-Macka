@@ -102,7 +102,7 @@ function agregarVentaRapida() {
     let cantidad = Number(document.getElementById("cantidad").value);
 
     if (isNaN(precio) || isNaN(cantidad) || precio <= 0 || cantidad <= 0) {
-    mostrarAlerta("Error", "Precio y cantidad deben ser válidos");
+    mostrarAlerta("Error", "Completa todos los campos");
     return;
 }
 
